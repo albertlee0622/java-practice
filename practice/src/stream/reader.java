@@ -3,7 +3,7 @@ package stream;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class reader {
+public class Reader {
 
 	public static void main(String[] args) throws Exception {
 		int n = 0;
