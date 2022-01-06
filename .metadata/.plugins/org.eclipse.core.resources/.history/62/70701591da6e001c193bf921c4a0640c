@@ -1,7 +1,0 @@
-package stream;
-
-import java.io.FileInputStream;
-
-public class stream {
-	
-}
