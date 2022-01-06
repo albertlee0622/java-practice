@@ -1,0 +1,26 @@
+package practice;
+
+public class SingleThread {
+	
+	public void doA() {
+		int[] numbers = {1, 2, 3, 4, 5, 7, 8, 9, 10};
+		for(int i = 0; i < numbers.length; i++) {
+			System.out.print(numbers[i] + ", ");
+		}
+	}
+	
+	public void doB() {
+		int[] numbers = {1, 2, 3, 4, 5, 7, 8, 9, 10};
+		for(int i = 0; i < numbers.length; i++) {
+			System.out.print(numbers[i] + 10, ", ");
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SingleThread st = new SingleThread();
+		st.doA();
+		st.doB();
+	}
+
+}
