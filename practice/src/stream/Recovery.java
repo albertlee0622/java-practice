@@ -1,5 +1,6 @@
 package stream;
 
+import java.io.BufferedInputStream;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,11 +11,13 @@ public class Recovery {
 	public static void main(String[] args) {
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
+		BufferedInputStream bis = null;
 		Address addr = null;
 		
 		try {
 			fis = new FileInputStream("address.txt");
-			ois = new ObjectInputStream(fis);
+			bis = new BufferedInputStream(fis);
+			ois = new ObjectInputStream(bis);
 			while(true) {
 				addr = (Address)ois.readObject();
 				System.out.println(addr.getMobile() + " | " + addr.getAddress());
@@ -32,6 +35,7 @@ public class Recovery {
 		finally {
 			try {
 				ois.close();
+				bis.close();
 				fis.close();
 			}
 			catch (IOException e) {
