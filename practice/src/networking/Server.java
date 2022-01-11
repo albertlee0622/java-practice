@@ -16,9 +16,11 @@ public class Server {
 
 	private class Echo extends Thread {
 		private Socket socket;
+		
 		private InputStream is;
 		private InputStreamReader isr;
 		private BufferedReader br;
+		
 		private OutputStream os;
 		private PrintWriter pw;
 		
@@ -44,29 +46,37 @@ public class Server {
 				br.close();
 				isr.close();
 				is.close();
-				pw.close();
-				os.close();
 			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		
-		@Override
-		public void run() {
+		private void processMessage() {
 			while(true) {
 				try {
 					String s = br.readLine();
 					if(s != null) {
-						pw.println(s);
-						pw.flush();
+						for(Echo echo : echos) {
+							if (!echo.equals(this)){
+								System.out.println(String.format("Forward message from [%d] to [%d]", echo.socket.getPort(), this.socket.getPort()));
+								echo.pw.println("from " + this.socket.getPort() + ": "  + s);
+								echo.pw.flush();
+//								pw.close(); //this closes inner streams... don't do it
+							}
+						}	
 					}
 				}
 				catch (IOException e) {
-					close();
+//					close();
 					e.printStackTrace();
 				}
 			}
+		}
+		
+		@Override
+		public void run() {
+			processMessage();
 		}
 	}
 	
