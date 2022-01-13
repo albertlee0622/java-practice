@@ -82,7 +82,7 @@ public class Server {
 	
 	private void startServer(int port) {
 		try {
-			ServerSocket serverSocket = new ServerSocket(port, 5, InetAddress.getByName("localhost"));
+			ServerSocket serverSocket = new ServerSocket(port, 5, InetAddress.getByName("198.168.1.160"));
 			while(true) {
 				System.out.println("Listening...");
 				Socket socket = serverSocket.accept();
