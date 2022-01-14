@@ -82,7 +82,11 @@ public class Server {
 	
 	private void startServer(int port) {
 		try {
-			ServerSocket serverSocket = new ServerSocket(port, 5, InetAddress.getByName("198.168.1.160"));
+//			byte[] ipAddr = new byte[]{ (byte) Integer.parseInt("192"), (byte) 168, (byte) 1, (byte) 166 };
+			InetAddress ia = InetAddress.getByName("192.168.1.166");
+			System.out.println(ia);
+			ServerSocket serverSocket = new ServerSocket(port, 5, ia);	
+			System.out.println(serverSocket);
 			while(true) {
 				System.out.println("Listening...");
 				Socket socket = serverSocket.accept();
@@ -99,6 +103,6 @@ public class Server {
 
 	public static void main(String[] args) throws IOException {
 		Server server = new Server();
-		server.startServer(3000);
+		server.startServer(3001);
 	}
 }

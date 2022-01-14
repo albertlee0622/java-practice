@@ -21,7 +21,9 @@ public class Client extends Thread {
 	public Client() {
 		super();
 		try {
-			socket = new Socket("127.0.0.1", 3000);
+			socket = new Socket("192.168.1.166", 3000);
+			System.out.println(socket);
+			
 			is = socket.getInputStream();
 			isr = new InputStreamReader(is);
 			br = new BufferedReader(isr);
