@@ -7,7 +7,7 @@ public class NamecardDDL {
 	public static void main(String[] args) {
 		
 		final String DB_URL = "jdbc:oracle:thin:@127.0.0.1:1521/XEPDB1";
-		final String USER = "scott";
+		final String USER = "scott"; //why must be lowercase??
 		final String PASSWORD = "tiger";
 		
 		// TODO Auto-generated method stub
